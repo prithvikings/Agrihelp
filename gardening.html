@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gardening Tips - EcoGarden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: "gilroy" }
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .active-category {
+            background-color: #4d9d7f !important;
+            color: white !important;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-white border-b py-4 px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center sticky top-0 z-10">
+        <h1 class="text-2xl sm:text-3xl font-bold text-[#4d9d7f] mb-4 sm:mb-0">Eco<span class="text-gray-700">Garden</span></h1>
+        <nav class="flex flex-wrap justify-center items-center gap-4 sm:gap-8">
+            <a href="./index.html" class="text-gray-600 hover:text-green-600 font-medium text-sm sm:text-base">Home</a>
+            <a href="./about.html" class="text-gray-600 hover:text-green-600 font-medium text-sm sm:text-base">About Us</a>
+            <a href="./tips.html" class="text-green-600 font-medium text-sm sm:text-base">Gardening Tips</a>
+            <a href="./contact.html" class="text-gray-600 hover:text-green-600 font-medium text-sm sm:text-base">Contact </a>
+            <button class="bg-[#4d9d7f] text-white px-4 py-1 sm:px-5 sm:py-2 rounded-lg shadow-md hover:bg-green-700 text-sm sm:text-base">Get Ai Help</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12 px-4 sm:px-8 bg-gradient-to-br from-green-50 to-green-100">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">Sustainable Gardening Tips</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Expert advice to help you grow a thriving, eco-friendly garden</p>
+        </div>
+    </section>
+
+    <!-- Tips Categories -->
+    <section class="py-12 px-4 sm:px-8 max-w-6xl mx-auto">
+        <div id="category-buttons" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <button data-category="all" class="bg-green-600 text-white px-4 py-2 rounded-lg font-medium active-category">All Tips</button>
+            <button data-category="water" class="bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300 font-medium">Water Saving</button>
+            <button data-category="soil" class="bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300 font-medium">Soil Health</button>
+            <button data-category="pest" class="bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300 font-medium">Pest Control</button>
+        </div>
+
+        <!-- Featured Tips -->
+        <div id="tips-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Tip 1 -->
+            <div class="tip-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300" data-categories="soil">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Composting" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <span class="text-green-600 text-sm font-semibold">Soil Health</span>
+                    <h3 class="text-xl font-bold text-gray-800 my-2">Start Composting</h3>
+                    <p class="text-gray-600 mb-4">Turn kitchen scraps into nutrient-rich compost. Layer greens (vegetable scraps) and browns (dry leaves) in a 1:3 ratio.</p>
+                    <button class="read-more-btn text-green-600 font-medium flex items-center" data-tip="1">
+                        Read More
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tip 2 -->
+            <div class="tip-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300" data-categories="water">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1529303906282-705ca092db6f?q=80&w=2049&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Watering plants" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <span class="text-green-600 text-sm font-semibold">Water Saving</span>
+                    <h3 class="text-xl font-bold text-gray-800 my-2">Smart Watering Techniques</h3>
+                    <p class="text-gray-600 mb-4">Water early in the morning to reduce evaporation. Use drip irrigation or soaker hoses for efficient water delivery.</p>
+                    <button class="read-more-btn text-green-600 font-medium flex items-center" data-tip="2">
+                        Read More
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tip 3 -->
+            <div class="tip-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300" data-categories="pest">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ladybug on plant" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <span class="text-green-600 text-sm font-semibold">Pest Control</span>
+                    <h3 class="text-xl font-bold text-gray-800 my-2">Natural Pest Deterrents</h3>
+                    <p class="text-gray-600 mb-4">Plant marigolds to repel nematodes and attract ladybugs. Use neem oil spray for common garden pests.</p>
+                    <button class="read-more-btn text-green-600 font-medium flex items-center" data-tip="3">
+                        Read More
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tip 4 -->
+            <div class="tip-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300" data-categories="soil">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mulching" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <span class="text-green-600 text-sm font-semibold">Soil Health</span>
+                    <h3 class="text-xl font-bold text-gray-800 my-2">The Power of Mulching</h3>
+                    <p class="text-gray-600 mb-4">Apply 2-3 inches of organic mulch to retain moisture, suppress weeds, and regulate soil temperature.</p>
+                    <button class="read-more-btn text-green-600 font-medium flex items-center" data-tip="4">
+                        Read More
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tip 5 -->
+            <div class="tip-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300" data-categories="plant">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Native plants" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <span class="text-green-600 text-sm font-semibold">Plant Selection</span>
+                    <h3 class="text-xl font-bold text-gray-800 my-2">Choose Native Plants</h3>
+                    <p class="text-gray-600 mb-4">Native plants require less water and maintenance while supporting local wildlife and pollinators.</p>
+                    <button class="read-more-btn text-green-600 font-medium flex items-center" data-tip="5">
+                        Read More
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tip 6 -->
+            <div class="tip-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300" data-categories="plant">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Crop rotation" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <span class="text-green-600 text-sm font-semibold">Vegetable Gardening</span>
+                    <h3 class="text-xl font-bold text-gray-800 my-2">Practice Crop Rotation</h3>
+                    <p class="text-gray-600 mb-4">Rotate vegetable families each season to prevent soil depletion and reduce disease buildup.</p>
+                    <button class="read-more-btn text-green-600 font-medium flex items-center" data-tip="6">
+                        Read More
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-12">
+            <nav class="flex items-center space-x-2">
+                <button id="prev-page" class="px-3 py-1 rounded-lg border border-gray-300 text-gray-600">&laquo;</button>
+                <button class="page-btn px-3 py-1 rounded-lg bg-green-600 text-white" data-page="1">1</button>
+                <button class="page-btn px-3 py-1 rounded-lg border border-gray-300 text-gray-600" data-page="2">2</button>
+                <button class="page-btn px-3 py-1 rounded-lg border border-gray-300 text-gray-600" data-page="3">3</button>
+                <button id="next-page" class="px-3 py-1 rounded-lg border border-gray-300 text-gray-600">&raquo;</button>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-12 px-4 bg-green-50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">Get More Gardening Tips</h2>
+            <p class="text-gray-600 mb-6 max-w-2xl mx-auto">Subscribe to our newsletter for weekly sustainable gardening advice</p>
+            <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input 
+                    type="email" 
+                    id="newsletter-email"
+                    placeholder="Your email address" 
+                    class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-300"
+                    required
+                >
+                <button 
+                    type="submit" 
+                    class="bg-green-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-700 transition duration-200"
+                >
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Tip Detail Modal -->
+    <div id="tip-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal float-right text-2xl font-bold cursor-pointer">&times;</span>
+            <div id="modal-content" class="mt-4"></div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-900 text-white py-8 sm:py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-6 sm:mb-8">
+                <p class="text-xs sm:text-sm uppercase tracking-widest text-gray-400 mb-1 sm:mb-2">College Project</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-widest">Sustainable Gardening Advisor</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center pt-6 sm:pt-8 border-t border-gray-700">
+                <div class="flex flex-wrap justify-center space-x-4 sm:space-x-6 mb-4 md:mb-0">
+                    <a href="./index.html" class="text-xs sm:text-sm text-gray-400 hover:text-white transition duration-200">Home</a>
+                    <a href="./about.html" class="text-xs sm:text-sm text-gray-400 hover:text-white transition duration-200">About Us</a>
+                    <a href="./gardening.html" class="text-xs sm:text-sm text-gray-400 hover:text-white transition duration-200">Gardening Tips</a>
+                    <a href="./contact.html" class="text-xs sm:text-sm text-gray-400 hover:text-white transition duration-200">Contact</a>
+                </div>
+                <p class="text-xs sm:text-sm text-gray-400">© 2024 Sustainable Gardening Advisor. College AI Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category filtering
+            const categoryButtons = document.querySelectorAll('#category-buttons button');
+            const tipCards = document.querySelectorAll('.tip-card');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button styling
+                    categoryButtons.forEach(btn => btn.classList.remove('active-category', 'bg-green-600', 'text-white'));
+                    this.classList.add('active-category', 'bg-green-600', 'text-white');
+                    
+                    const category = this.dataset.category;
+                    
+                    // Filter tips
+                    tipCards.forEach(card => {
+                        if (category === 'all' || card.dataset.categories.includes(category)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Tip details modal
+            const modal = document.getElementById('tip-modal');
+            const modalContent = document.getElementById('modal-content');
+            const closeModal = document.querySelector('.close-modal');
+            const readMoreBtns = document.querySelectorAll('.read-more-btn');
+            
+            // Tip details data
+            const tipDetails = {
+                1: {
+                    title: "Start Composting",
+                    category: "Soil Health",
+                    image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    content: `
+                        <h3 class="text-2xl font-bold mb-4">Composting Basics</h3>
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Composting" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <p class="mb-4">Composting is nature's way of recycling organic materials into rich soil. Here's how to get started:</p>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>Choose a location for your compost bin or pile</li>
+                            <li>Layer green materials (vegetable scraps, grass clippings) and brown materials (dry leaves, newspaper)</li>
+                            <li>Maintain a 3:1 ratio of browns to greens</li>
+                            <li>Keep the pile moist but not soggy</li>
+                            <li>Turn the pile every 2-4 weeks to aerate</li>
+                        </ul>
+                        <p>In 2-6 months, you'll have nutrient-rich compost for your garden!</p>
+                    `
+                },
+                2: {
+                    title: "Smart Watering Techniques",
+                    category: "Water Saving",
+                    image: "https://images.unsplash.com/photo-1601593768790-1a7b0a85a0d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    content: `
+                        <h3 class="text-2xl font-bold mb-4">Efficient Watering Methods</h3>
+                        <img src="https://images.unsplash.com/photo-1601593768790-1a7b0a85a0d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Watering plants" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <p class="mb-4">Conserving water in your garden is both eco-friendly and cost-effective. Try these techniques:</p>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>Water early in the morning (5-9am) to reduce evaporation</li>
+                            <li>Use drip irrigation or soaker hoses instead of sprinklers</li>
+                            <li>Water deeply but less frequently to encourage deep root growth</li>
+                            <li>Add 2-3 inches of mulch to retain soil moisture</li>
+                            <li>Group plants with similar water needs together</li>
+                        </ul>
+                        <p>These methods can reduce your outdoor water use by up to 50%!</p>
+                    `
+                },
+                3: {
+                    title: "Natural Pest Deterrents",
+                    category: "Pest Control",
+                    image: "https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    content: `
+                        <h3 class="text-2xl font-bold mb-4">Organic Pest Control</h3>
+                        <img src="https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ladybug on plant" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <p class="mb-4">Keep pests away without harmful chemicals using these natural methods:</p>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>Plant marigolds to repel nematodes and attract beneficial insects</li>
+                            <li>Use neem oil spray (mix 2 tsp neem oil + 1 tsp mild soap + 1 quart water)</li>
+                            <li>Introduce beneficial insects like ladybugs and lacewings</li>
+                            <li>Make a garlic or chili pepper spray for soft-bodied insects</li>
+                            <li>Use floating row covers to protect plants from insects</li>
+                        </ul>
+                        <p>These methods create a balanced ecosystem in your garden.</p>
+                    `
+                },
+                4: {
+                    title: "The Power of Mulching",
+                    category: "Soil Health",
+                    image: "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    content: `
+                        <h3 class="text-2xl font-bold mb-4">Mulching Benefits and Techniques</h3>
+                        <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mulching" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <p class="mb-4">Mulching is one of the most beneficial practices for your garden. Benefits include:</p>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>Conserves soil moisture by reducing evaporation</li>
+                            <li>Suppresses weeds by blocking sunlight</li>
+                            <li>Regulates soil temperature (cooler in summer, warmer in winter)</li>
+                            <li>Improves soil structure as it decomposes</li>
+                            <li>Prevents soil erosion</li>
+                        </ul>
+                        <p>Apply 2-3 inches of organic mulch (wood chips, straw, leaves) around plants, keeping it a few inches away from stems.</p>
+                    `
+                },
+                5: {
+                    title: "Choose Native Plants",
+                    category: "Plant Selection",
+                    image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    content: `
+                        <h3 class="text-2xl font-bold mb-4">Benefits of Native Plants</h3>
+                        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Native plants" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <p class="mb-4">Native plants are perfectly adapted to your local climate and ecosystem. Advantages include:</p>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>Require less water once established</li>
+                            <li>Need minimal fertilizers or pesticides</li>
+                            <li>Provide habitat and food for local wildlife</li>
+                            <li>Support pollinators like bees and butterflies</li>
+                            <li>Generally more resistant to local pests and diseases</li>
+                        </ul>
+                        <p>Visit your local nursery or extension service for recommendations on plants native to your area.</p>
+                    `
+                },
+                6: {
+                    title: "Practice Crop Rotation",
+                    category: "Vegetable Gardening",
+                    image: "https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                    content: `
+                        <h3 class="text-2xl font-bold mb-4">Crop Rotation Guide</h3>
+                        <img src="https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Crop rotation" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <p class="mb-4">Rotating crops annually prevents soil depletion and reduces disease. Follow these principles:</p>
+                        <ul class="list-disc pl-5 mb-4 space-y-2">
+                            <li>Group plants by family (tomatoes/peppers/eggplant, cabbage/broccoli, beans/peas, etc.)</li>
+                            <li>Don't plant the same family in the same spot for 3-4 years</li>
+                            <li>Follow heavy feeders (tomatoes) with soil builders (beans)</li>
+                            <li>Alternate deep-rooted and shallow-rooted plants</li>
+                            <li>Keep a garden journal to track planting locations</li>
+                        </ul>
+                        <p>This practice improves soil health and can increase your yields!</p>
+                    `
+                }
+            };
+            
+            // Show modal with tip details
+            readMoreBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tipId = this.dataset.tip;
+                    const tip = tipDetails[tipId];
+                    
+                    modalContent.innerHTML = `
+                        <span class="text-green-600 text-sm font-semibold">${tip.category}</span>
+                        <h2 class="text-3xl font-bold my-2">${tip.title}</h2>
+                        ${tip.content}
+                    `;
+                    
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Pagination functionality
+            const pageBtns = document.querySelectorAll('.page-btn');
+            const prevPageBtn = document.getElementById('prev-page');
+            const nextPageBtn = document.getElementById('next-page');
+            let currentPage = 1;
+            
+            pageBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    currentPage = parseInt(this.dataset.page);
+                    updatePagination();
+                    // In a real app, you would load the appropriate page content here
+                    // For this demo, we'll just show an alert
+                    alert(`Loading page ${currentPage}... (This would fetch new tips in a real application)`);
+                });
+            });
+            
+            prevPageBtn.addEventListener('click', function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updatePagination();
+                    alert(`Loading page ${currentPage}...`);
+                }
+            });
+            
+            nextPageBtn.addEventListener('click', function() {
+                if (currentPage < 3) { // Assuming 3 pages total
+                    currentPage++;
+                    updatePagination();
+                    alert(`Loading page ${currentPage}...`);
+                }
+            });
+            
+            function updatePagination() {
+                pageBtns.forEach(btn => {
+                    btn.classList.remove('bg-green-600', 'text-white');
+                    if (parseInt(btn.dataset.page) === currentPage) {
+                        btn.classList.add('bg-green-600', 'text-white');
+                    }
+                });
+            }
+            
+            // Newsletter form submission
+            const newsletterForm = document.getElementById('newsletter-form');
+            
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('newsletter-email').value;
+                
+                if (email) {
+                    // In a real app, you would send this to your server
+                    console.log('Subscribed email:', email);
+                    alert('Thank you for subscribing to our gardening newsletter!');
+                    newsletterForm.reset();
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
