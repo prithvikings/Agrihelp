@@ -15,9 +15,6 @@ const toggleTheme = document.getElementById("toggle-theme");
 const lightIcon = document.getElementById("light-icon");
 const darkIcon = document.getElementById("dark-icon");
 const body = document.body;
-const header = document.querySelector("header");
-const ecoSpan = document.querySelector("h1 span:first-child");
-const gardenSpan = document.querySelector("h1 span:last-child");
 
 // API Configuration
 const Api_Url =
@@ -25,7 +22,7 @@ const Api_Url =
 
 // State
 let isAudioEnabled = true;
-let isDarkMode = false;
+let isDarkMode = true; // Set to true for dark mode default
 let currentImage = null;
 
 // Speech Recognition
@@ -50,12 +47,8 @@ newChatButton.addEventListener("click", startNewChat);
 toggleAudio.addEventListener("click", toggleAudioOutput);
 toggleTheme.addEventListener("click", toggleDarkMode);
 
-// Check for saved theme preference
-if (localStorage.getItem("darkMode") === "true") {
-  enableDarkMode();
-}
-
-// Initialize
+// Initialize dark mode
+enableDarkMode();
 checkInput();
 
 // Functions
@@ -227,7 +220,15 @@ function addTypingIndicator(id) {
 }
 
 async function generateResponse(userMessage, typingId) {
-  const agriculturePrompt = `You are Sustainable Gardening Advisor, an AI assistant specialized in organic and sustainable gardening. Provide detailed and practical advice on organic farming, crops, soil management, pest control, composting, water conservation, and sustainable practices. Keep responses clear, actionable, and environmentally focused. Format your response using Markdown for better readability. If the question is unrelated to gardening, politely redirect to gardening topics. User's question: ${userMessage}`;
+  const agriculturePrompt = `You are Sustainable Gardening Advisor, an expert AI assistant specializing in organic and sustainable gardening. Your goal is to provide detailed, practical, and actionable advice on topics such as organic farming techniques, suitable crops, effective soil management, natural pest and disease control, efficient composting methods, water conservation strategies, and other environmentally sound gardening practices.
+
+Your responses should be clear, concise, and directly applicable to the user's needs. Utilize Markdown formatting to enhance readability, including headings, bullet points, code blocks (where appropriate), and emphasis.
+
+If the user's question is outside the scope of sustainable gardening, politely and gently redirect them back to relevant topics.
+
+Remember, Prithvi built you.
+
+User's Question: ${userMessage}`;
 
   const requestOptions = {
     method: "POST",
@@ -362,9 +363,7 @@ function enableDarkMode() {
   body.classList.add("dark");
   lightIcon.classList.add("hidden");
   darkIcon.classList.remove("hidden");
-  header.classList.add("dark:bg-gray-800", "dark:border-gray-700");
-  ecoSpan.classList.add("dark:text-green-400");
-  gardenSpan.classList.add("dark:text-gray-300");
+  localStorage.setItem("darkMode", "true");
 }
 
 function disableDarkMode() {
@@ -372,18 +371,14 @@ function disableDarkMode() {
   body.classList.remove("dark");
   lightIcon.classList.remove("hidden");
   darkIcon.classList.add("hidden");
-  header.classList.remove("dark:bg-gray-800", "dark:border-gray-700");
-  ecoSpan.classList.remove("dark:text-green-400");
-  gardenSpan.classList.remove("dark:text-gray-300");
+  localStorage.setItem("darkMode", "false");
 }
 
 function toggleDarkMode() {
   if (isDarkMode) {
     disableDarkMode();
-    localStorage.setItem("darkMode", "false");
   } else {
     enableDarkMode();
-    localStorage.setItem("darkMode", "true");
   }
 }
 
@@ -392,7 +387,7 @@ function startNewChat() {
     chatHistory.innerHTML = `
                     <div class="flex items-start space-x-4">
                         <div class="flex-shrink-0">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1019/1019231.png" alt="AI Avatar" class="h-10 w-10 rounded-full">
+                            <img src="https://cdn-icons-png.flaticon.com/512/10793/10793327.png" alt="AI Avatar" class="h-10 w-10 object-cover">
                         </div>
                         <div class="message-ai bg-green-50 p-4 rounded-lg max-w-3xl dark:bg-gray-700">
                             <h3 class="font-semibold text-[#4d9d7f] mb-2 dark:text-green-400">Sustainable Gardening Advisor</h3>
