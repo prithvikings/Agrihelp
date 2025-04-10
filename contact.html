@@ -45,9 +45,9 @@
 
     <!-- Contact Options -->
     <section class="py-12 px-4 sm:px-8 max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 contact-cards">
             <!-- Contact Card 1 -->
-            <div class="contact-card bg-white p-6 rounded-xl shadow-md transition-all duration-300">
+            <div class="contact-card bg-white p-6 rounded-xl shadow-md transition-all duration-300 ">
                 <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
                     <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -85,7 +85,7 @@
         </div>
 
         <!-- Contact Form and Map -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 contact-form-map">
             <!-- Contact Form -->
             <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
@@ -333,5 +333,8 @@
         window.location.href = "./chatbot/chat.html"; // Replace with your target URL
     }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./animation/animeContact.js"></script>
 </body>
 </html>
