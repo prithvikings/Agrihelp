@@ -28,53 +28,43 @@
 </head>
 <body class="bg-gray-50">
     <header class="bg-white border-b py-4 px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center sticky top-0 z-10">
-        <a href="./index.html" class="text-2xl sm:text-3xl font-bold text-[#4d9d7f] mb-4 sm:mb-0">Eco<span class="text-gray-700">Garden</span></a>
+        <a href="./index.html" class="text-2xl sm:text-3xl font-bold text-[#4d9d7f] mb-4 sm:mb-0 nav-title">Eco<span class="text-gray-700">Garden</span></a>
         <nav class="flex flex-wrap justify-center items-center gap-4 sm:gap-8">
-            <a href="./index.html" class="text-green-600 font-medium text-sm sm:text-base">Home</a>
-            <a href="./about.html" class="text-gray-600 hover:text-green-600 font-medium text-sm sm:text-base">About Us</a>
-            <a href="./gardening.html" class="text-gray-600 hover:text-green-600 font-medium text-sm sm:text-base">Gardening Tips</a>
-            <a href="./contact.html" class="text-gray-600 hover:text-green-600 font-medium text-sm sm:text-base">Contact</a>
-            <a href="./chatbot/chat.html" class="bg-[#4d9d7f] text-white px-4 py-1 sm:px-5 sm:py-2 rounded-lg shadow-md hover:bg-green-700 text-sm sm:text-base">Get Ai Help</a>
+            <a href="./index.html" class="text-green-600 font-medium text-sm sm:text-base nav-elem">Home</a>
+            <a href="./about.html" class="text-gray-600 hover:text-green-600 font-medium text-sm sm:text-base nav-elem">About Us</a>
+            <a href="./gardening.html" class="text-gray-600 hover:text-green-600 font-medium text-sm sm:text-base nav-elem">Gardening Tips</a>
+            <a href="./contact.html" class="text-gray-600 hover:text-green-600 font-medium text-sm sm:text-base nav-elem">Contact</a>
+            <a href="./chatbot/chat.html" class="bg-[#4d9d7f] text-white px-4 py-1 sm:px-5 sm:py-2 rounded-lg shadow-md hover:bg-green-700 text-sm sm:text-base nav-elem">Get Ai Help</a>
         </nav>
     </header>
 
     <section class="min-h-screen flex flex-col md:flex-row items-center py-8 sm:py-16 px-4 sm:px-8 md:px-20 bg-gradient-to-br from-green-50 to-green-100">
-        <div class="md:w-1/2 space-y-4 sm:space-y-6 text-center md:text-left">
-            <span class="text-green-700 bg-green-200 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">AI-Powered Gardening</span>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-800">Sustainable Gardening Advisor</h2>
-            <p class="text-base sm:text-lg text-gray-600 md:w-2/3">Get personalized, eco-friendly gardening advice powered by artificial intelligence.</p>
-            <button id="advisor-btn" class="bg-[#4d9d7f] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg shadow-md hover:bg-green-700 mx-auto md:mx-0">Try Our Advisor</button>
+        <div class="md:w-1/2 space-y-4 sm:space-y-6 text-center md:text-left hero-left">
+            <span class="text-green-700 bg-green-200 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold grad-hero-txt">AI-Powered Gardening</span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-800 hero-h2">Sustainable Gardening Advisor</h2>
+            <p class="text-base sm:text-lg text-gray-600 md:w-2/3 hero-p">Get personalized, eco-friendly gardening advice powered by artificial intelligence.</p>
+            <button id="advisor-btn" class="bg-[#4d9d7f] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg shadow-md hover:bg-green-700 mx-auto md:mx-0 hero-btn font-semibold">Try Our Advisor</button>
         </div>
         <div class="md:w-1/2 mt-8 md:mt-0 h-64 sm:h-96">
-            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sustainable gardening" class="rounded-xl w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sustainable gardening" class="rounded-xl w-full h-full object-cover hover:scale-105 transition-transform duration-300 hero-img">
         </div>
     </section>
 
     <!-- AI Advisor Chat Interface (initially hidden) -->
     <div id="chat-container" class="fixed bottom-0 right-0 w-full md:w-96 bg-white shadow-xl rounded-t-lg border border-gray-200 chat-hidden">
         <div class="bg-green-600 text-white p-4 rounded-t-lg flex justify-between items-center">
-            <h3 class="font-semibold">Gardening Advisor</h3>
+            <h3 class="font-semibold ">Gardening Advisor</h3>
             <button id="close-chat" class="text-white hover:text-gray-200">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
             </button>
         </div>
-        <div id="chat-messages" class="p-4 h-64 overflow-y-auto">
-            <div class="bg-green-100 text-gray-800 p-3 rounded-lg mb-3 max-w-xs">
-                Hello! I'm your Sustainable Gardening Advisor. How can I help you today?
-            </div>
-        </div>
-        <div class="p-4 border-t border-gray-200">
-            <div class="flex">
-                <input id="user-input" type="text" placeholder="Ask a gardening question..." class="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-300">
-                <button id="send-btn" class="bg-green-600 text-white px-4 py-2 rounded-r-lg hover:bg-green-700">Send</button>
-            </div>
-        </div>
+        
     </div>
 
-    <section class="py-8 sm:py-12 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
+    <section class="py-8 sm:py-12 px-4 text-center " id="second-section">
+        <div class="max-w-4xl mx-auto" id="second-section-content">
             <span class="text-green-700 bg-green-200 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">Benefits of Sustainable Gardening</span>
             <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mt-2">Why Choose Sustainable Gardening?</h1>
             <p class="text-base sm:text-lg text-gray-600 mt-4">Environmentally friendly practices that benefit your garden and the planet</p>
@@ -84,8 +74,8 @@
         </div>
     </section>
 
-    <section class="py-8 sm:py-12 px-4 max-w-6xl mx-auto">
-        <div class="text-center mb-8 sm:mb-12">
+    <section class="py-8 sm:py-12 px-4 max-w-6xl mx-auto txt-aigarden">
+        <div class="text-center mb-8 sm:mb-12 ">
             <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">AI Gardening Technology</h1>
             <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Smart recommendations powered by machine learning for optimal plant health and sustainability</p>
         </div>
@@ -107,7 +97,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="features-section">
             <h2 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6 sm:mb-8">Features</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -140,7 +130,7 @@
     </section>
 
     <section class="py-8 sm:py-16 px-4 max-w-6xl mx-auto">
-        <div class="bg-gradient-to-r from-green-600 to-green-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 text-white">
+        <div class="bg-gradient-to-r from-green-600 to-green-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 text-white impact-elem">
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center">Our Impact</h2>
             
             <div class="grid grid-cols-3 gap-4 sm:gap-8 mb-8 sm:mb-12">
@@ -213,5 +203,8 @@
         window.location.href = "./chatbot/chat.html"; // Replace with your target URL
     }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="anime.js"></script>
 </body>
 </html>
