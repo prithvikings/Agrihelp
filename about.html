@@ -15,7 +15,7 @@
 </head>
 <body class="bg-gray-50">
     <header class="bg-white border-b py-4 px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center sticky top-0 z-10">
-        <a href="./index.html" class="text-2xl sm:text-3xl font-bold text-[#4d9d7f] mb-4 sm:mb-0">Eco<span class="text-gray-700">Garden</span></a>
+        <a href="./index.html" class="text-2xl sm:text-3xl font-bold text-[#4d9d7f] mb-4 sm:mb-0 ">Eco<span class="text-gray-700">Garden</span></a>
         <nav class="flex flex-wrap justify-center items-center gap-4 sm:gap-8">
             <a href="./index.html" class="text-gray-600 hover:text-green-600 font-medium text-sm sm:text-base">Home</a>
             <a href="./about.html" class="text-green-600 font-medium text-sm sm:text-base">About Us</a>
@@ -28,7 +28,7 @@
 
     <!-- Hero Section -->
     <section class="py-12 px-4 sm:px-8 bg-gradient-to-br from-green-50 to-green-100">
-        <div class="max-w-6xl mx-auto text-center">
+        <div class="max-w-6xl mx-auto text-center center-txt">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">Meet the Team Behind EcoGarden</h1>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">The passionate developers creating AI-powered solutions for sustainable gardening</p>
         </div>
@@ -71,7 +71,7 @@
     </section>
 
     <!-- Team Section -->
-    <section class="py-12 px-4 sm:px-8 max-w-6xl mx-auto">
+    <section class="py-12 px-4 sm:px-8 max-w-6xl mx-auto our-tm">
         <div class="text-center mb-12">
             <span class="text-green-700 bg-green-200 px-3 py-1 rounded-full text-sm font-semibold">Our Team</span>
             <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mt-4">The Minds Behind the Technology</h2>
@@ -208,8 +208,8 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-12 px-4 sm:px-8 max-w-6xl mx-auto">
-        <div class="bg-gradient-to-r from-green-600 to-green-800 rounded-xl p-8 md:p-12 text-white text-center">
+    <section class="py-12 px-4 sm:px-8 max-w-6xl mx-auto ">
+        <div class="bg-gradient-to-r from-green-600 to-green-800 rounded-xl p-8 md:p-12 text-white text-center impact-elem">
             <h2 class="text-2xl sm:text-3xl font-bold mb-4">Ready to Grow Sustainably?</h2>
             <p class="text-lg mb-6 max-w-2xl mx-auto">Try our AI gardening advisor and discover how easy sustainable gardening can be.</p>
             <button id="advisor-btn" class="bg-white text-green-800 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-200">Try Our Advisory</button>
@@ -240,5 +240,8 @@
          window.location.href = "./chatbot/chat.html"; // Replace with your target URL
      }
      </script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script src="./animation/animeAbout.js"></script>
 </body>
 </html>
