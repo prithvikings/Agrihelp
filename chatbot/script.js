@@ -226,7 +226,7 @@ Your responses should be clear, concise, and directly applicable to the user's n
 
 If the user's question is outside the scope of sustainable gardening, politely and gently redirect them back to relevant topics.
 
-Remember, Prithvi built you.
+Remember, Shivam, Ridham built you.
 
 User's Question: ${userMessage}`;
 
