@@ -4,6 +4,7 @@ AgriHelp is a comprehensive platform designed to support sustainable farming pra
 
 ## Features
 
+
 * **Sustainable Farming Resources:** Access a wealth of information on eco-friendly agricultural methods, including:
     * Water conservation techniques
     * Natural pest control
